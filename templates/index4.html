@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Oracle BIP Reports IntelliScan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            color: #333;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+            text-align: left;
+            font-weight: 500;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .scanner-image {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .scanner-image {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .tabs button {
+            flex: 1;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            background-color: #f4f4f9;
+            transition: background-color 0.3s ease;
+        }
+        .tabs button.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://blog.logomaster.ai/hs-fs/hubfs/ibm-logo-2.jpg?width=672&height=448&name=ibm-logo-2.jpg" alt="Scanner Image" class="scanner-image">
+        <h1>Welcome to Oracle BIP Reports IntelliScan</h1>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="tab1">Extract Permissions</button>
+            <button class="tab-button" data-tab="tab2">Extract SQL Code</button>
+        </div>
+        <div id="tab1" class="content active">
+            <form action="http://127.0.0.1:5000/search" method="POST">
+                <div class="form-group">
+                    <label for="folder">Parent Folder Path:</label>
+                    <input type="text" id="folder" name="folder" placeholder="Enter parent folder path">
+                </div>
+                <div class="form-group">
+                    <label for="keyword">Enter Rolename:</label>
+                    <input type="text" id="keyword" name="keyword" placeholder="Enter keyword to search">
+                </div>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div id="tab2" class="content">
+            <form action="http://127.0.0.1:5001/search" method="POST">
+                <div class="form-group">
+                    <label for="folder">Parent Folder Path:</label>
+                    <input type="text" id="folder" name="folder" placeholder="Enter parent folder path">
+                </div>
+                <div class="form-group">
+                    <label for="keyword">Enter Keyword:</label>
+                    <input type="text" id="keyword" name="keyword" placeholder="Enter keyword to search">
+                </div>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Oracle BIP Scan Tool. All rights reserved to IBM Oracle HCM Community.</p>
+        </div>
+    </div>
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const contents = document.querySelectorAll('.content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

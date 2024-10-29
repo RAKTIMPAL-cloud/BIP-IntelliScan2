@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Oracle BIP DeepScan</title>
+    <!-- Link to Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Inline CSS for styling -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(1px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        /* Scanner Image Styling */
+        .scanner-image {
+            width: 100%; /* Set to 100% of the container width */
+            max-width: 180px; /* Limit maximum width */
+            height: auto;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* New Animation for Scanner Image */
+        .scanner-image {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Use a local image by referencing the correct relative path -->
+        <img src="https://blog.logomaster.ai/hs-fs/hubfs/ibm-logo-2.jpg?width=672&height=448&name=ibm-logo-2.jpg" alt="Scanner Image" class="scanner-image">
+
+        <h1>Welcome to Oracle BIP DeepScan</h1>
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="folder">Parent Folder Path:</label>
+                <input type="text" id="folder" name="folder" placeholder="Enter parent folder path">
+            </div>
+
+            <div class="form-group">
+                <label for="keyword">Enter Keyword:</label>
+                <input type="text" id="keyword" name="keyword" placeholder="Enter keyword to search">
+            </div>
+
+            <input type="submit" value="Search">
+        </form>
+
+        <div class="footer">
+            <p>&copy; 2024 Oracle BIP Scan Tool. All rights reserved to IBM Oracle HCM Community.</p>
+        </div>
+    </div>
+
+</body>
+</html>
